@@ -78,6 +78,7 @@ def handle_message(event):
 if __name__ == "__main__":
     port = int(os.getenv("PORT", 5000))
     print("Starting Flask OpenAI app")
+    print("...")
 
     app.run(host="0.0.0.0", port=port, debug=False, threaded=True)
 

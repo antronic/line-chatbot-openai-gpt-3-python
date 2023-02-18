@@ -1,5 +1,6 @@
 import json
 from flask import Flask, request, abort, jsonify
+from flask_cors import CORS
 from azure_openai import ask_azure_gpt
 
 from linebot import (
@@ -19,7 +20,8 @@ from dotenv import load_dotenv
 load_dotenv()
 
 app = Flask(__name__)
-
+CORS(app)
+CORS(app, methods=["GET", "POST", "PUT", "DELETE"])
 
 line_bot_api = LineBotApi(os.getenv("LINE_CHANNEL_ACCESS_TOKEN"))
 handler = WebhookHandler(os.getenv("LINE_CHANNEL_SECRET"))
